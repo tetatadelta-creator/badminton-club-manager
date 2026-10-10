@@ -38,8 +38,9 @@ function GiliranPage() {
   function nextTurn(c: number) {
     setState((st) => {
       const queue = st.rotation.filter((r) => r.court === c).sort((a, b) => a.order - b.order);
-      if (queue.length === 0) return st;
-      const [first, ...rest] = queue;
+      const first = queue[0];
+      if (!first) return st;
+      const rest = queue.slice(1);
       const maxOrder = Math.max(0, ...rest.map((r) => r.order));
       const rotated = [
         ...st.rotation.filter((r) => r.court !== c),
