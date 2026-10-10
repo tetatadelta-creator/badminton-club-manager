@@ -129,6 +129,7 @@ export function useClub(): State {
       return () => listeners.delete(cb);
     },
     getState,
+    () => seed,
   );
 }
 
